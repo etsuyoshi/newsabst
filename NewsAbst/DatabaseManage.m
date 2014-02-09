@@ -15,12 +15,17 @@
 //DB名称を他クラスから指定しないようにする
 
 +(NSArray *)getValueFromDB{
+    //全部出すのは時間がかかるので最大100記事まで取得
+    return [self getValueFromDBFor:100];
+}
+
++(NSArray *)getValueFromDBFor:(int)num{
     @autoreleasepool {
         NSMutableArray *arrReturn = [NSMutableArray array];
         int _idNo = 1;
         NSDictionary *_dict;
-        for(;_idNo < 10;){
-            _dict = [self getValueFromDB:(int)_idNo];
+        for(;_idNo < num;){//num個まで取得する
+            _dict = [self getValueFromDBAt:(int)_idNo];
             if([[_dict objectForKey:@"id"] isEqual:nil]){
                 break;
             }
@@ -32,8 +37,10 @@
         //キー(カラム名)と値(DB値)が格納された辞書が格納された配列を返す
         return arrReturn;
     }
+    
+    
 }
-+(NSDictionary *)getValueFromDB:(int)idNo{
++(NSDictionary *)getValueFromDBAt:(int)idNo{
     
     @autoreleasepool {
         //カラム配列定義
@@ -92,7 +99,7 @@
         NSLog(@"同期通信失敗");
         return nil;
     }else{
-        NSLog(@"同期通信成功->%@", result);
+        NSLog(@"同期通信成功");
     }
     
     

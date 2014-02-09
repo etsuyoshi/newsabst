@@ -24,7 +24,8 @@ typedef NS_ENUM(NSInteger, DataType) {
 
 @interface DatabaseManage : NSObject
 +(NSArray *)getValueFromDB;
-+(NSDictionary *)getValueFromDB:(int)idNo;
++(NSArray *)getValueFromDBFor:(int)num;
++(NSDictionary *)getValueFromDBAt:(int)idNo;
 //最終的には以下のクラスは内部クラス用として使用し、外部からカラム名等を指定させないようにする(アクセス禁止)
 //-(NSString *)getValueFromDB:(NSString *)user_id column:(NSString *)column;
 //-(NSData *)formEncodedDataFromDictionary:(NSDictionary *)dict;
