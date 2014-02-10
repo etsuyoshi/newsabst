@@ -11,9 +11,20 @@
 typedef NS_ENUM(NSInteger, TableType) {
     TableTypeSports,
     TableTypeTechnology,
-    TableTypeArts
+    TableTypeArts,
+    TableTypeBusiness,
+    TableTypeFinance,
+    TableTypeEntertainment,
+    TableTypeBlog,
+    TableTypePolitics,
+    TableTypeMatome
 };
 
 @interface ArticleTable : UIView
 
+@property (nonatomic) TableType tableType;
+@property (nonatomic) UIColor *cellColor;
+@property (nonatomic) NSMutableArray *arrCells;
+-(id)initWithType:(TableType)tableType;
+-(void)addCell:(ArticleCell *)articleCell;
 @end

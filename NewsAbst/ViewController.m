@@ -51,7 +51,27 @@ int noStatus;//現在の状態(どの区切りか)を判別:最初は一番左�
 //    @"saveddate",
     
     //表示コンポーネントやデータの初期化等
-    backgroundView = [[BackgroundView alloc]init];
+    NSArray *arrTable = [NSArray arrayWithObjects:
+                         [[ArticleTable alloc] initWithType:TableTypeTechnology],
+                         [[ArticleTable alloc] initWithType:TableTypeSports],
+                         [[ArticleTable alloc] initWithType:TableTypeArts],
+                         [[ArticleTable alloc] initWithType:TableTypeBusiness],
+                         [[ArticleTable alloc] initWithType:TableTypeFinance],
+                         nil];
+    
+    for(int i = 0 ;i < [arrTable count];i++){
+        for(int j = 0;j < 5;j++){//各テーブルに５個のセルを配置
+            ArticleCell *articleCell =
+            [[ArticleCell alloc]initWithFrame:
+             CGRectMake(0, 0, 250, 10)];//位置はaddCellメソッド内で適当に配置
+            
+            [((ArticleTable *)arrTable[i]) addCell:articleCell];
+            
+//            NSLog(@"arrtable%d = %@", i, arrTable[i]);
+        }
+    }
+    backgroundView = [[BackgroundView alloc]initWithTable:arrTable];
+    
     
     
 }
@@ -84,14 +104,14 @@ int noStatus;//現在の状態(どの区切りか)を判別:最初は一番左�
     //＜未＞画面サイズに対してマージンが少しある程度のフレームを作成し、
     //フリックで背景画像よりも少し小さめ移動させる
     //コンポーネントの配置
-    ArticleCell *articleView =
-    [[ArticleCell alloc]
-     initWithFrame:
-     CGRectMake(10, 100, 200, 150)];
-    
-    articleView.translucentAlpha = 0.5f;
-//    [self.view addSubview:articleView];
-    [backgroundView addSubview:articleView];
+//    ArticleCell *articleView =
+//    [[ArticleCell alloc]
+//     initWithFrame:
+//     CGRectMake(10, 100, 200, 150)];
+//    
+//    articleView.translucentAlpha = 0.5f;
+////    [self.view addSubview:articleView];
+//    [backgroundView addSubview:articleView];
 }
 
 

@@ -18,6 +18,13 @@
     
     if(self){
         [self initializer];
+        
+        UITapGestureRecognizer *tapGesture;
+        tapGesture = [[UITapGestureRecognizer alloc]
+                      initWithTarget:self
+                      action:@selector(onTapped:)];
+        [self addGestureRecognizer:tapGesture];
+        self.userInteractionEnabled = YES;
     }
     
     return self;
@@ -35,6 +42,9 @@
     }
 }
 
+-(void)onTapped:(UITapGestureRecognizer *)gr{
+    NSLog(@"ontapped");
+}
 
 
 @end

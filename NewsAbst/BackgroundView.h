@@ -11,4 +11,6 @@
 
 @interface BackgroundView : UIImageView
 
+- (id)initWithTable:(NSArray *)_arrTable;
+
 @end
