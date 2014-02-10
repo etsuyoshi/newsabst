@@ -25,13 +25,13 @@
 
 -(void)initializer{
     @autoreleasepool {
-        //透過したいViewの背景色を透明に
+
+        self.translucentAlpha = 0.8f;
+        self.translucentStyle = UIBarStyleDefault;
+        self.translucentTintColor = [UIColor yellowColor];
         self.backgroundColor = [UIColor clearColor];
         
-        //ダミーToolBarを作成し、Viewの再背面に挿入
-        UIToolbar *dummyToolBar = [[UIToolbar alloc] initWithFrame:self.bounds];
-        dummyToolBar.barStyle = UIBarStyleBlack;
-        [self insertSubview:dummyToolBar atIndex:0];
+        
     }
 }
 

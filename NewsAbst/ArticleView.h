@@ -6,9 +6,10 @@
 //  Copyright (c) 2014年 endo.news. All rights reserved.
 //
 
+#import "ILTranslucentView.h"
 #import <Foundation/Foundation.h>
 
-@interface ArticleView : UIView
+@interface ArticleView : ILTranslucentView
 //@property (nonatomic, copy) UIImageView *imv;
 @property (nonatomic, copy) NSString *text;
 

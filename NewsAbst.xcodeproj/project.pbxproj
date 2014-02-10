@@ -187,8 +187,6 @@
 			children = (
 				340FE28418A61B360007080B /* DatabaseManage.h */,
 				340FE28518A61B360007080B /* DatabaseManage.m */,
-				340FE28018A616ED0007080B /* ArticleView.h */,
-				340FE28118A616ED0007080B /* ArticleView.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -212,6 +210,8 @@
 		34B9DE2E18A8B74D00F6D455 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				340FE28018A616ED0007080B /* ArticleView.h */,
+				340FE28118A616ED0007080B /* ArticleView.m */,
 				34B9DE2F18A8B77200F6D455 /* ILTranslucentView */,
 			);
 			name = Component;
