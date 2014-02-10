@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8E9B091B-65D3-4F22-BCD6-571AC44216BB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>NewsAbst</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1F249110-CC3B-4BB1-B710-469E8E1778F0</key>
+		<string>ssh://github.com/etsuyoshi/newsabst.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>NewsAbst.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1F249110-CC3B-4BB1-B710-469E8E1778F0</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/etsuyoshi/newsabst.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1F249110-CC3B-4BB1-B710-469E8E1778F0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1F249110-CC3B-4BB1-B710-469E8E1778F0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>NewsAbst</string>
+		</dict>
+	</array>
+</dict>
+</plist>

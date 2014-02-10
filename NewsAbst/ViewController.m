@@ -17,7 +17,8 @@
 @implementation ViewController
 
 UIImageView *imvBackground;
-
+CGPoint pntStartDrag;
+int noStatus;//現在の状態(どの区切りか)を判別:最初は一番左の状態
 
 - (void)viewDidLoad
 {
@@ -58,7 +59,7 @@ UIImageView *imvBackground;
      @"bird.png",
      @"building.png",
      @"building2.png",
-     @"dest.png",
+     @"desk.png",
      @"light.png",
      @"street.png",
      @"sunset.png",
@@ -125,52 +126,167 @@ UIImageView *imvBackground;
     
 }
 
+
+//常に定位置にいるように設定
 -(void)onFlickedFrame:(UIPanGestureRecognizer *)gr{
-//    int sensitivity = 3;//移動間隔
-    //移動幅
+    //画像の枚数
+    int numOfImage = imvBackground.bounds.size.width / [UIScreen mainScreen].bounds.size.width;
+    
+    int frameSize = [UIScreen mainScreen].bounds.size.width;
+    
+    
+    
+    
+    
+    
+    //移動幅:コンマ数秒間隔でサンプリングされた際の移動幅(タッチしてからの移動幅ではない)
     CGPoint movingPoint = [gr translationInView:imvBackground];
-//    if(sensitivity != 0){
-//        point = CGPointMake(point.x*(0.5f*sensitivity+1), point.y);
-//    }
     //移動後の中心位置
     CGPoint movedPoint = CGPointMake(imvBackground.center.x + movingPoint.x,
                                      imvBackground.center.y);
     
-    NSLog(@"onFlickedFrame : %f, %f", movedPoint.x, movedPoint.y);
+//    NSLog(@"onFlickedFrame : %f, %f", movedPoint.x, movedPoint.y);
     
     
     //画像を一枚毎に定位置に表示する(定位置：各画像の中心が画面の中心となるように)
     //フリック幅がある程度の大きさになったら
-    if(abs(movingPoint.x) > 100){
-        //移動した後の定位置を取得
-        //具体的にはfor文を回して、中心点が各「区切り」の範囲内にあるかどうか判定し、中心点が存在する範囲の中心に画像の中心を設置
-        int numOfImage = imvBackground.bounds.size.width / [UIScreen mainScreen].bounds.size.width;
-        for(int i = 0 ;i < numOfImage;i++){
-            
-        }
-    }else{
-        if(movedPoint.x - imvBackground.bounds.size.width + [[UIScreen mainScreen] bounds].size.width/2 <= [[UIScreen mainScreen] bounds].size.width/2 &&
-           movedPoint.x - imvBackground.bounds.size.width + [[UIScreen mainScreen] bounds].size.width/2 >= [[UIScreen mainScreen] bounds].size.width/2 - imvBackground.bounds.size.width){
+//    if(abs(movedPoint.x) > 100){//移動した後の
+//        //移動した後の定位置を取得
+//        //具体的にはfor文を回して、中心点が各「区切り」の範囲内にあるかどうか判定し、中心点が存在する範囲の中心に画像の中心を設置
+//        
+//        
+//        for(int i = 0 ;i < numOfImage;i++){
+//            
+//        }
+//        
+//        //ちがう！：隣の区切りに移動するだけ
+//        if(movedPoint.x * -1 < 0){//右移動の場合
+//            //右隣の画像を画面の中心に配置
+////            imvBackground.center =
+////            CGPointMake(現在状態noStatusの定位置に対する右隣定位置の中心に配置, <#CGFloat y#>)
+//        }else{//左移動の場合
+//            
+//        }
+//        
+//    }else{
+        //通常のフリック
+        //基準点(screen center)から左側へimvBackground横幅まで移動可能にする
+//        if(movedPoint.x - imvBackground.bounds.size.width + [[UIScreen mainScreen] bounds].size.width/2 <= frameSize/2 &&
+//           movedPoint.x - imvBackground.bounds.size.width + [[UIScreen mainScreen] bounds].size.width/2 >= frameSize/2 - imvBackground.bounds.size.width){
             //中心位置に表示する
             imvBackground.center = movedPoint;
             [gr setTranslation:CGPointZero inView:imvBackground];
             
-        }
+//        }
 
-    }
-    
-    //通常のフリック
-    //基準点(screen center)から左側へimvBackground横幅まで移動可能にする
+//    }
     
     
-    if (gr.state == UIGestureRecognizerStateChanged) {//移動中
-        NSLog(@"dragging");
+    
+    if (gr.state == UIGestureRecognizerStateBegan) {
+        pntStartDrag = CGPointMake(imvBackground.center.x,
+                                   imvBackground.center.y);
+        //現在位置の判定
+        int xOfRightImageCenter = imvBackground.frame.origin.x + imvBackground.bounds.size.width - frameSize/2;//一番右の画像の中心位置
+        for(int i = 0;i < numOfImage;i++){
+            if(xOfRightImageCenter >= i * frameSize &&
+               xOfRightImageCenter < (i + 1) * frameSize){
+                
+                noStatus = numOfImage - i - 1;//左の画像(の中心)が見えている状態を０、右隣の画像(中心)が画面上に見えている場合は１、。。。
+                //            NSLog(@"nostatus=%d", noStatus);
+            }
+        }
+        NSLog(@"from status = %d", noStatus);
+//        NSLog(@"start drag from %f", [gr locationInView:imvBackground].x);
+    }else if (gr.state == UIGestureRecognizerStateChanged) {//移動中
+//        NSLog(@"dragging : status%d", noStatus);
     }
     // 指が離されたとき、ビューを元に位置に戻して、ラベルの文字列を変更する
     else if (gr.state == UIGestureRecognizerStateEnded) {//指を離した時
-        NSLog(@"released");
+        NSLog(@"released : at %f, status%d", [gr locationInView:imvBackground].x, noStatus);
+        //移動幅が小さければ元の位置にアニメーションで戻す
+        NSLog(@"moving width = %d, start=%f, end=%f",
+              abs(pntStartDrag.x - [gr locationInView:imvBackground].x),
+              pntStartDrag.x,
+              [gr locationInView:imvBackground].x);
+
+        
+        if(pntStartDrag.x - imvBackground.center.x > 100){//左にドラッグ
+            if(noStatus < numOfImage-1)
+                noStatus++;
+        }else if(pntStartDrag.x - imvBackground.center.x < -100){
+            if(noStatus > 0)
+                noStatus--;
+        }else{
+            //do nothing
+        }
+        NSLog(@"to status = %d", noStatus);
+        [UIView
+         animateWithDuration:0.25f
+         delay:0.0f
+         options:UIViewAnimationOptionCurveEaseIn
+         animations:^{
+             
+             imvBackground.frame =
+             CGRectMake(frameSize * -noStatus, 0, imvBackground.bounds.size.width,
+                        imvBackground.bounds.size.height);
+             NSLog(@"animated to x=%f", (float)frameSize * - noStatus);
+         }
+         completion:^(BOOL finished){
+             
+         }];
     }
 }
+
+// ドラッグジェスチャー処理２：http://qiita.com/yuch_i/items/f9d6efb8ba165313427c
+//- (void)panGesture:(UIPanGestureRecognizer *)sender {
+//    // ドラッグ開始
+//    if (sender.state == UIGestureRecognizerStateBegan) {
+//        _startPt = [sender locationInView:self];
+//    }
+//    // ドラッグ移動
+//    if (sender.state == UIGestureRecognizerStateChanged) {
+//        CGPoint pt = [sender locationInView:self];
+//        self.contentView.center = CGPointMake(self.frame.size.width / 2 - (_startPt.x - pt.x), self.contentView.center.y);
+//    }
+//    // ドラッグ移動 or ドラッグ終了
+//    if (sender.state == UIGestureRecognizerStateChanged ||
+//        sender.state == UIGestureRecognizerStateEnded) {
+//        
+//        // ドラッグ移動量 閾値判定
+//        BOOL changing = (fabs(self.frame.origin.x - self.contentView.frame.origin.x) > 100);
+//        
+//        [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut
+//                         animations:^{
+//                             // セル位置を元に戻す
+//                             if (sender.state == UIGestureRecognizerStateEnded) {
+//                                 self.contentView.center = CGPointMake(self.frame.size.width / 2, self.contentView.center.y);
+//                             }
+//                             if (changing) {
+//                                 // セル色変更
+//                                 if (! self.task.done) {
+//                                     self.backgroundColor = [UIColor grayColor];
+//                                 } else {
+//                                     self.backgroundColor = [UIColor clearColor];
+//                                 }
+//                                 // 状態を反転
+//                                 if (sender.state == UIGestureRecognizerStateEnded) {
+//                                     self.task.done = ! self.task.done;
+//                                 }
+//                             } else {
+//                                 // セル色変更
+//                                 if (sender.state == UIGestureRecognizerStateChanged) {
+//                                     if (! self.task.done) {
+//                                         self.backgroundColor = [UIColor clearColor];
+//                                     } else {
+//                                         self.backgroundColor = [UIColor grayColor];
+//                                     }
+//                                 }
+//                             }
+//                         } completion:^(BOOL finished) {
+//                         }];
+//    }
+//}
 
 
 -(void)getDataFromDB{
