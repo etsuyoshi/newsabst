@@ -113,7 +113,7 @@ int noStatus;//現在の状態(どの区切りか)を判別:最初は一番左�
     
     //背景やコンポーネントの配置
     
-    
+    //背景の配置
     UIPanGestureRecognizer *panGesture;
     panGesture = [[UIPanGestureRecognizer alloc]
                   initWithTarget:self
@@ -124,6 +124,15 @@ int noStatus;//現在の状態(どの区切りか)を判別:最初は一番左�
     NSLog(@"imvbackground=%@", imvBackground);
     
     
+    //画面サイズに対してマージンが少しある程度のフレームを作成し、
+    //フリックで背景画像よりも少し小さめ移動させる
+    //コンポーネントの配置
+    ArticleView *articleView =
+    [[ArticleView alloc]
+     initWithFrame:
+     CGRectMake(10, 100, 200, 150)];
+//    [self.view addSubview:articleView];
+    [imvBackground addSubview:articleView];
 }
 
 
@@ -162,8 +171,7 @@ int noStatus;//現在の状態(どの区切りか)を判別:最初は一番左�
 //        //ちがう！：隣の区切りに移動するだけ
 //        if(movedPoint.x * -1 < 0){//右移動の場合
 //            //右隣の画像を画面の中心に配置
-////            imvBackground.center =
-////            CGPointMake(現在状態noStatusの定位置に対する右隣定位置の中心に配置, <#CGFloat y#>)
+//    現在状態noStatusの定位置に対する右隣定位置の中心に配置
 //        }else{//左移動の場合
 //            
 //        }

@@ -21,7 +21,7 @@
 		340FE26C18A606010007080B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE24E18A606010007080B /* UIKit.framework */; };
 		340FE27418A606010007080B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 340FE27218A606010007080B /* InfoPlist.strings */; };
 		340FE27618A606010007080B /* NewsAbstTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 340FE27518A606010007080B /* NewsAbstTests.m */; };
-		340FE28218A616ED0007080B /* ArticleTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 340FE28118A616ED0007080B /* ArticleTile.m */; };
+		340FE28218A616ED0007080B /* ArticleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 340FE28118A616ED0007080B /* ArticleView.m */; };
 		340FE28618A61B360007080B /* DatabaseManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 340FE28518A61B360007080B /* DatabaseManage.m */; };
 		34AE367218A799F2009BBFAA /* aman.png in Resources */ = {isa = PBXBuildFile; fileRef = 34AE366918A799F2009BBFAA /* aman.png */; };
 		34AE367318A799F2009BBFAA /* bird.png in Resources */ = {isa = PBXBuildFile; fileRef = 34AE366A18A799F2009BBFAA /* bird.png */; };
@@ -32,6 +32,7 @@
 		34AE367818A799F2009BBFAA /* street.png in Resources */ = {isa = PBXBuildFile; fileRef = 34AE366F18A799F2009BBFAA /* street.png */; };
 		34AE367918A799F2009BBFAA /* sunset.png in Resources */ = {isa = PBXBuildFile; fileRef = 34AE367018A799F2009BBFAA /* sunset.png */; };
 		34AE367A18A799F2009BBFAA /* wood.png in Resources */ = {isa = PBXBuildFile; fileRef = 34AE367118A799F2009BBFAA /* wood.png */; };
+		34B9DE3218A8B77200F6D455 /* ILTranslucentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B9DE3118A8B77200F6D455 /* ILTranslucentView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,8 +65,8 @@
 		340FE27118A606010007080B /* NewsAbstTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NewsAbstTests-Info.plist"; sourceTree = "<group>"; };
 		340FE27318A606010007080B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		340FE27518A606010007080B /* NewsAbstTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsAbstTests.m; sourceTree = "<group>"; };
-		340FE28018A616ED0007080B /* ArticleTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleTile.h; sourceTree = "<group>"; };
-		340FE28118A616ED0007080B /* ArticleTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleTile.m; sourceTree = "<group>"; };
+		340FE28018A616ED0007080B /* ArticleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleView.h; sourceTree = "<group>"; };
+		340FE28118A616ED0007080B /* ArticleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleView.m; sourceTree = "<group>"; };
 		340FE28418A61B360007080B /* DatabaseManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManage.h; sourceTree = "<group>"; };
 		340FE28518A61B360007080B /* DatabaseManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManage.m; sourceTree = "<group>"; };
 		34AE366918A799F2009BBFAA /* aman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aman.png; sourceTree = "<group>"; };
@@ -77,6 +78,8 @@
 		34AE366F18A799F2009BBFAA /* street.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = street.png; sourceTree = "<group>"; };
 		34AE367018A799F2009BBFAA /* sunset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sunset.png; sourceTree = "<group>"; };
 		34AE367118A799F2009BBFAA /* wood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wood.png; sourceTree = "<group>"; };
+		34B9DE3018A8B77200F6D455 /* ILTranslucentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTranslucentView.h; sourceTree = "<group>"; };
+		34B9DE3118A8B77200F6D455 /* ILTranslucentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTranslucentView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +139,7 @@
 		340FE25018A606010007080B /* NewsAbst */ = {
 			isa = PBXGroup;
 			children = (
+				34B9DE2E18A8B74D00F6D455 /* Component */,
 				34AE366818A799C9009BBFAA /* Image */,
 				340FE28318A61AF70007080B /* Data */,
 				340FE25918A606010007080B /* AppDelegate.h */,
@@ -183,8 +187,8 @@
 			children = (
 				340FE28418A61B360007080B /* DatabaseManage.h */,
 				340FE28518A61B360007080B /* DatabaseManage.m */,
-				340FE28018A616ED0007080B /* ArticleTile.h */,
-				340FE28118A616ED0007080B /* ArticleTile.m */,
+				340FE28018A616ED0007080B /* ArticleView.h */,
+				340FE28118A616ED0007080B /* ArticleView.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -203,6 +207,23 @@
 				34AE367118A799F2009BBFAA /* wood.png */,
 			);
 			name = Image;
+			sourceTree = "<group>";
+		};
+		34B9DE2E18A8B74D00F6D455 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				34B9DE2F18A8B77200F6D455 /* ILTranslucentView */,
+			);
+			name = Component;
+			sourceTree = "<group>";
+		};
+		34B9DE2F18A8B77200F6D455 /* ILTranslucentView */ = {
+			isa = PBXGroup;
+			children = (
+				34B9DE3018A8B77200F6D455 /* ILTranslucentView.h */,
+				34B9DE3118A8B77200F6D455 /* ILTranslucentView.m */,
+			);
+			path = ILTranslucentView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,9 +334,10 @@
 			files = (
 				340FE26118A606010007080B /* ViewController.m in Sources */,
 				340FE25B18A606010007080B /* AppDelegate.m in Sources */,
-				340FE28218A616ED0007080B /* ArticleTile.m in Sources */,
+				340FE28218A616ED0007080B /* ArticleView.m in Sources */,
 				340FE28618A61B360007080B /* DatabaseManage.m in Sources */,
 				340FE25718A606010007080B /* main.m in Sources */,
+				34B9DE3218A8B77200F6D455 /* ILTranslucentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

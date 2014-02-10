@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DatabaseManage.h"
+#import "ArticleView.h"
 
 @interface ViewController : UIViewController
 

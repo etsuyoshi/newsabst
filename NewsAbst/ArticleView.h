@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ArticleTile : NSObject
-@property (nonatomic, copy) UIImageView *imv;
+@interface ArticleView : UIView
+//@property (nonatomic, copy) UIImageView *imv;
 @property (nonatomic, copy) NSString *text;
 
 @end
