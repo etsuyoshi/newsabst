@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 endo.news. All rights reserved.
 //
 
-#import "ArticleView.h"
+#import "ArticleCell.h"
 
-@implementation ArticleView
+@implementation ArticleCell
 @synthesize text = _text;
 //@synthesize imv = _imv;
 
@@ -25,7 +25,7 @@
 
 -(void)initializer{
     @autoreleasepool {
-
+        //デフォルト値：インスタンス化した後も設定可能
         self.translucentAlpha = 0.8f;
         self.translucentStyle = UIBarStyleDefault;
         self.translucentTintColor = [UIColor yellowColor];
@@ -34,5 +34,7 @@
         
     }
 }
+
+
 
 @end
